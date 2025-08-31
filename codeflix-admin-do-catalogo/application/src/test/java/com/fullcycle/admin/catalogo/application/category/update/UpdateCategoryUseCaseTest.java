@@ -48,7 +48,7 @@ public class UpdateCategoryUseCaseTest {
         );
 
         when(categoryGateway.findById(eq(expectedId)))
-                .thenReturn(Optional.of(category));
+                .thenReturn(Optional.of(category.clone()));
 
         when(categoryGateway.update(any()))
                 .thenAnswer(invocation -> invocation.getArgument(0));
