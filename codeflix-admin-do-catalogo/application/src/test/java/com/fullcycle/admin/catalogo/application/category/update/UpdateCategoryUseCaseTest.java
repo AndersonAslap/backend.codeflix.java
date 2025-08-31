@@ -6,6 +6,7 @@ import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.category.CategoryId;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,11 +30,10 @@ public class UpdateCategoryUseCaseTest {
     @Mock
     private CategoryGateway categoryGateway;
 
-    // 1. Teste do caminho feliz
-    // 2. Teste passando uma propiedade inválida (name)
-    // 3. Teste atualizando uma categoria para inativa
-    // 4. Teste simulando um erro genérico vindo do gateway
-    // 5. Teste atualizar categoria passando ID inválido
+    @BeforeEach
+    void cleanUp() {
+        Mockito.reset(categoryGateway);
+    }
 
     @Test
     public void givenAValidCommand_whenCallsUpdateCategory_shouldReturnCategoryId() {
